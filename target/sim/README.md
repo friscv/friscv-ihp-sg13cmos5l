@@ -31,6 +31,7 @@ obj_dir_chip/chip_sim server [port]             # remote bitbang for OpenOCD
 | `VERNII_UART_DIV` | | UART divisor |
 | `VERNII_FLASH` | | Flash image for programs that drive flash themselves |
 | `VERNII_SD_IMAGE` | | SD card image |
+| `VERNII_SD_NCR` | 1 | Bytes before an SD response, 1 to 8 |
 | `VERNII_BOOT_SEL` | 2 | Boot select for `uartboot` |
 | `VERNII_HB_CFG` | | `reg:value[,...]` HyperBus controller registers |
 | `VERNII_HRAM_LATENCY` | 6 | HyperRAM initial latency in clocks |

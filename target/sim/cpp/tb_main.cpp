@@ -594,6 +594,7 @@ int main(int argc, char** argv) {
 
         testbench.set_float_seed(env_u32("VERNII_FLOAT_SEED", 1));
         testbench.sd().set_miso_delay(env_u32("VERNII_SD_MISO_DELAY", 0));
+        testbench.sd().set_response_delay(env_u32("VERNII_SD_NCR", 1));
 
         testbench.reset();
 

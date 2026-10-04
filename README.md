@@ -52,6 +52,9 @@ The first activation downloads the prebuilt tools (a few minutes). After that, `
 - `hw/` - `chip_soc` and the vendored PULP HyperBus.
 - `target/ihp-sg13cmos5l/` - synthesis, LibreLane flow, pad ring, PDK cells.
 - `target/sim/` - Verilator and Icarus simulation harness, directed tests.
-- `target/xilinx/pynq-z2/` - FPGA counterpart of the chip.
+- `target/xilinx/nexys-video/` - FPGA counterpart of the chip, with real flash, SD card and HyperRAM.
+- `target/xilinx/pynq-z2/` - FPGA counterpart without HyperRAM.
+- `target/xilinx/common/` - build flow and scripts shared by the FPGA targets.
+- `target/lattice/ulx3s/` - ULX3S stand-in for the chip board's flash and SD card.
 - `docs/` - design notes.
 - `flake.nix` - Nix toolchain definition.

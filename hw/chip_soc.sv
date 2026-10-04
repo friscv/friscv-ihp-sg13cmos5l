@@ -26,6 +26,9 @@ module chip_soc import vernii_pkg::*; #(
 ) (
     input  logic  clk_i,
     input  logic  rst_ni,
+`ifdef TARGET_XILINX
+    input  logic  clk_ref200_i,  // IDELAYCTRL reference for the HyperBus delay lines
+`endif
 
     output logic  heartbeat_o,
 
@@ -217,6 +220,9 @@ hyperbus #(
     .AxiWLogDepth    ( 1                       )
 ) i_hyperbus (
     .clk_phy_i       ( clk_i                    ),
+`ifdef TARGET_XILINX
+    .clk_ref200_i,
+`endif
     .rst_phy_ni      ( hyper_rstn_rep[0]        ),
     .clk_sys_i       ( clk_i                    ),
     .rst_sys_ni      ( hyper_rstn_rep[1]        ),

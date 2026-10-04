@@ -188,6 +188,9 @@
               uv
               jq
               haskellPackages.sv2v
+              nextpnr
+              trellis
+              openfpgaloader
             ]) ++ [
               mise
               yosys-full
