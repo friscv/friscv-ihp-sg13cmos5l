@@ -7,6 +7,7 @@
         ".bender/git/checkouts",
         "hw",
         "target/ihp-sg13cmos5l/src/stubs",
+        "target/xilinx/nexys-video/src",
         "target/xilinx/pynq-z2/src",
         "target/ihp-sg13cmos5l/src"
       ],
