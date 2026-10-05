@@ -12,6 +12,7 @@
 | `boot[1:0]` | SW1, SW0 | `00` park for JTAG, `01` QSPI flash, `1x` UART |
 | `uart0_tx/rx` | USB-UART | 115200 8N1 at 50 MHz |
 | `jtag_*` | Pmod JC: TCK JC1, TDI JC2, TDO JC3, TMS JC4, TRST# JC7 | |
+| `harness_*` | Pmod JA: RST# JA7, BOOT0 JA8, BOOT1 JA9, heartbeat JA10 | For the test harness, see below |
 | `qspi0` CS0 | On-board S25FL256S | |
 | `qspi0` CS1 | microSD | SCK on CCLK, MOSI on CMD, MISO on DAT0, CS on DAT3 |
 | `qspi0` CS2 | Pmod JA: CS JA1, MOSI JA2, MISO JA3, SCK JA4 | Spare |
@@ -19,6 +20,10 @@
 | `hb_*` | FMC LPC, PHY of the HyperRAM board | CS0 to U7, CS1 to U8 |
 
 LD2 lights while the SoC is held in reset, LD3 once VADJ is up.
+
+### Test harness
+
+The harness drives reset and the boot straps, and watches the heartbeat. RST# is pulled up and is ANDed with CPU_RESET. BOOT1:BOOT0 are pulled down and ORed with SW1:SW0, leave the switches at `00` when the harness selects.
 
 ### Jumpers
 

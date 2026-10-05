@@ -21,6 +21,11 @@ module RVSoC9108_pynq_z2 (
     // Boot mode
     input  wire [1:0] boot_sel_i,
 
+    // Test harness
+    input  wire       harness_rst_ni,
+    input  wire [1:0] harness_boot_sel_i,
+    output wire       harness_heartbeat_o,
+
     // JTAG
     input  wire       jtag_tck_i,
     input  wire       jtag_tms_i,
@@ -50,7 +55,7 @@ logic       rst_req_n;
 logic [3:0] rst_sync_q;
 logic       soc_rst_n;
 
-assign rst_req_n = ps_rst_ni & ~rst_i;
+assign rst_req_n = ps_rst_ni & ~rst_i & harness_rst_ni;
 
 always_ff @(posedge clk_i or negedge rst_req_n) begin
     if (!rst_req_n) rst_sync_q <= '0;
@@ -142,8 +147,8 @@ chip_soc #(
     .hyper_cs_no     ( /* unused */ ),
     .hyper_reset_no  ( /* unused */ ),
 
-    // Boot mode select
-    .boot_sel_i,
+    // Boot mode select, switches must be at 00 for the harness to choose
+    .boot_sel_i      ( boot_sel_i | harness_boot_sel_i ),
 
     // GPIO Port A
     .gpio_a_i,
@@ -156,6 +161,8 @@ assign led_o[0] = heartbeat;
 assign led_o[1] = soc_end;
 assign led_o[2] = ~soc_rst_n;
 assign led_o[3] = ps_rst_ni;
+
+assign harness_heartbeat_o = heartbeat;
 
 endmodule
 

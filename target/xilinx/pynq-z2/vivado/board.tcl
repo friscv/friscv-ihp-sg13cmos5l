@@ -28,7 +28,8 @@ connect_bd_net [get_bd_pins ps7/FCLK_CLK0]     [get_bd_pins soc/clk_i]
 connect_bd_net [get_bd_pins ps7/FCLK_CLK1]     [get_bd_pins soc/clk_ref200_i]
 connect_bd_net [get_bd_pins ps7/FCLK_RESET0_N] [get_bd_pins soc/ps_rst_ni]
 
-foreach p {rst_i led_o boot_sel_i jtag_tck_i jtag_tms_i jtag_tdi_i jtag_trst_ni jtag_tdo_o
+foreach p {rst_i led_o boot_sel_i harness_rst_ni harness_boot_sel_i harness_heartbeat_o
+           jtag_tck_i jtag_tms_i jtag_tdi_i jtag_trst_ni jtag_tdo_o
            uart_rx_i uart_tx_o spi_sck_o spi_mosi_o spi_miso_i spi_cs_no gpio_a_io} {
     make_bd_pins_external -name $p [get_bd_pins soc/$p]
 }

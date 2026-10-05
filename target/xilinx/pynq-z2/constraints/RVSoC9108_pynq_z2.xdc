@@ -11,6 +11,12 @@ set_property -dict { PACKAGE_PIN M14 IOSTANDARD LVCMOS33 } [get_ports {led_o[3]}
 set_property -dict { PACKAGE_PIN M20 IOSTANDARD LVCMOS33 } [get_ports {boot_sel_i[0]}] ;# SW0
 set_property -dict { PACKAGE_PIN M19 IOSTANDARD LVCMOS33 } [get_ports {boot_sel_i[1]}] ;# SW1
 
+# Test harness on the RPi header
+set_property -dict { PACKAGE_PIN U7 IOSTANDARD LVCMOS33 PULLUP   true } [get_ports harness_rst_ni]          ;# GPIO17, pin 11
+set_property -dict { PACKAGE_PIN V7 IOSTANDARD LVCMOS33 PULLDOWN true } [get_ports {harness_boot_sel_i[0]}] ;# GPIO27, pin 13
+set_property -dict { PACKAGE_PIN W9 IOSTANDARD LVCMOS33 PULLDOWN true } [get_ports {harness_boot_sel_i[1]}] ;# GPIO26, pin 37
+set_property -dict { PACKAGE_PIN W8 IOSTANDARD LVCMOS33               } [get_ports harness_heartbeat_o]     ;# GPIO13, pin 33
+
 # JTAG
 set_property -dict { PACKAGE_PIN Y7  IOSTANDARD LVCMOS33 PULLDOWN true } [get_ports jtag_tck_i]   ;# GPIO24, pin 18
 set_property -dict { PACKAGE_PIN C20 IOSTANDARD LVCMOS33 PULLUP   true } [get_ports jtag_tdi_i]   ;# GPIO18, pin 12
@@ -88,4 +94,6 @@ set_max_delay -datapath_only 20.000 -from $soc_clk  -to $rwds_clk
 
 # Async I/O
 set_false_path -from [get_ports {rst_i boot_sel_i[*] uart_rx_i gpio_a_io[*]}]
+set_false_path -from [get_ports {harness_rst_ni harness_boot_sel_i[*]}]
 set_false_path -to   [get_ports {uart_tx_o gpio_a_io[*] led_o[*]}]
+set_false_path -to   [get_ports harness_heartbeat_o]

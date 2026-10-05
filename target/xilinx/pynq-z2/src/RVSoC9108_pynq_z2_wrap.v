@@ -23,6 +23,10 @@ module RVSoC9108_pynq_z2_wrap (
 
     input  wire [1:0] boot_sel_i,
 
+    input  wire       harness_rst_ni,
+    input  wire [1:0] harness_boot_sel_i,
+    output wire       harness_heartbeat_o,
+
     input  wire       jtag_tck_i,
     input  wire       jtag_tms_i,
     input  wire       jtag_tdi_i,
@@ -41,24 +45,27 @@ module RVSoC9108_pynq_z2_wrap (
 );
 
 RVSoC9108_pynq_z2 i_top (
-    .clk_i        ( clk_i        ),
-    .clk_ref200_i ( clk_ref200_i ),
-    .ps_rst_ni    ( ps_rst_ni    ),
-    .rst_i        ( rst_i        ),
-    .led_o        ( led_o        ),
-    .boot_sel_i   ( boot_sel_i   ),
-    .jtag_tck_i   ( jtag_tck_i   ),
-    .jtag_tms_i   ( jtag_tms_i   ),
-    .jtag_tdi_i   ( jtag_tdi_i   ),
-    .jtag_trst_ni ( jtag_trst_ni ),
-    .jtag_tdo_o   ( jtag_tdo_o   ),
-    .uart_rx_i    ( uart_rx_i    ),
-    .uart_tx_o    ( uart_tx_o    ),
-    .spi_sck_o    ( spi_sck_o    ),
-    .spi_mosi_o   ( spi_mosi_o   ),
-    .spi_miso_i   ( spi_miso_i   ),
-    .spi_cs_no    ( spi_cs_no    ),
-    .gpio_a_io    ( gpio_a_io    )
+    .clk_i               ( clk_i               ),
+    .clk_ref200_i        ( clk_ref200_i        ),
+    .ps_rst_ni           ( ps_rst_ni           ),
+    .rst_i               ( rst_i               ),
+    .led_o               ( led_o               ),
+    .boot_sel_i          ( boot_sel_i          ),
+    .harness_rst_ni      ( harness_rst_ni      ),
+    .harness_boot_sel_i  ( harness_boot_sel_i  ),
+    .harness_heartbeat_o ( harness_heartbeat_o ),
+    .jtag_tck_i          ( jtag_tck_i          ),
+    .jtag_tms_i          ( jtag_tms_i          ),
+    .jtag_tdi_i          ( jtag_tdi_i          ),
+    .jtag_trst_ni        ( jtag_trst_ni        ),
+    .jtag_tdo_o          ( jtag_tdo_o          ),
+    .uart_rx_i           ( uart_rx_i           ),
+    .uart_tx_o           ( uart_tx_o           ),
+    .spi_sck_o           ( spi_sck_o           ),
+    .spi_mosi_o          ( spi_mosi_o          ),
+    .spi_miso_i          ( spi_miso_i          ),
+    .spi_cs_no           ( spi_cs_no           ),
+    .gpio_a_io           ( gpio_a_io           )
 );
 
 endmodule

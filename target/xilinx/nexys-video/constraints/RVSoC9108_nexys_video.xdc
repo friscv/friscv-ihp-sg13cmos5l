@@ -52,6 +52,12 @@ set_property -dict { PACKAGE_PIN AB21 IOSTANDARD LVCMOS33               } [get_p
 set_property -dict { PACKAGE_PIN AB20 IOSTANDARD LVCMOS33 PULLUP   true } [get_ports spi2_miso_i] ;# JA3
 set_property -dict { PACKAGE_PIN AB18 IOSTANDARD LVCMOS33               } [get_ports spi2_sck_o]  ;# JA4
 
+# Test harness on Pmod JA bottom row
+set_property -dict { PACKAGE_PIN Y21  IOSTANDARD LVCMOS33 PULLUP   true } [get_ports harness_rst_ni]          ;# JA7
+set_property -dict { PACKAGE_PIN AA21 IOSTANDARD LVCMOS33 PULLDOWN true } [get_ports {harness_boot_sel_i[0]}] ;# JA8
+set_property -dict { PACKAGE_PIN AA20 IOSTANDARD LVCMOS33 PULLDOWN true } [get_ports {harness_boot_sel_i[1]}] ;# JA9
+set_property -dict { PACKAGE_PIN AA18 IOSTANDARD LVCMOS33               } [get_ports harness_heartbeat_o]     ;# JA10
+
 # GPIO Port A on Pmod JB, no pulls
 set_property -dict { PACKAGE_PIN V9 IOSTANDARD LVCMOS33 } [get_ports {gpio_a_io[0]}] ;# JB1
 set_property -dict { PACKAGE_PIN V8 IOSTANDARD LVCMOS33 } [get_ports {gpio_a_io[1]}] ;# JB2
@@ -133,4 +139,6 @@ set_false_path -to   [get_ports {hb_dq_io[*] hb_rwds_io hb_ck_o hb_cs_no[*] hb_r
 
 # Asynchronous I/O
 set_false_path -from [get_ports {cpu_rst_ni boot_sel_i[*] uart_rx_i gpio_a_io[*] sd_dat12_i[*]}]
+set_false_path -from [get_ports {harness_rst_ni harness_boot_sel_i[*]}]
 set_false_path -to   [get_ports {uart_tx_o gpio_a_io[*] led_o[*] set_vadj_o[*] vadj_en_o sd_reset_o}]
+set_false_path -to   [get_ports harness_heartbeat_o]

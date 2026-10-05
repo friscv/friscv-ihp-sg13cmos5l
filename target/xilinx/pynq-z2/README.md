@@ -12,11 +12,16 @@
 | `boot[1:0]` | SW1, SW0 | `00` park for JTAG, `01` SPI flash, `1x` UART |
 | `uart0_tx/rx` | RPi GPIO14 (pin 8), GPIO15 (pin 10) | 115200 8N1 when `clk` is 50 MHz |
 | `jtag_*` | RPi TCK GPIO24 (18), TMS GPIO23 (16), TDI GPIO18 (12), TDO GPIO25 (22), TRST# GPIO22 (15) | |
+| `harness_*` | RPi RST# GPIO17 (11), BOOT0 GPIO27 (13), BOOT1 GPIO26 (37), heartbeat GPIO13 (33) | For the test harness, see below |
 | `qspi0` SCK, MOSI, MISO | RPi GPIO11 (23), GPIO10 (19), GPIO9 (21) | |
 | `qspi0` CS0, CS1, CS2 | RPi GPIO8 (24), GPIO16 (36), GPIO20 (38) | Flash, SD card, spare |
 | `gpio_a[7:0]` | PMODB, JB1-JB4 and JB7-JB10 | No pulls |
 
 LD2 lights while the SoC is held in reset, LD3 once the PS has released the PL.
+
+### Test harness
+
+The harness drives reset and the boot straps, and watches the heartbeat. RST# is pulled up and is ANDed with BTN0. BOOT1:BOOT0 are pulled down and ORed with SW1:SW0, leave the switches at `00` when the harness selects.
 
 ### HyperBus
 

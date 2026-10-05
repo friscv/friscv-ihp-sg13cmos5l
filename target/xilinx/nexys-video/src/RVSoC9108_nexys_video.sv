@@ -25,6 +25,11 @@ module RVSoC9108_nexys_video #(
     // Boot mode
     input  wire [1:0] boot_sel_i,
 
+    // Test harness
+    input  wire       harness_rst_ni,
+    input  wire [1:0] harness_boot_sel_i,
+    output wire       harness_heartbeat_o,
+
     // JTAG
     input  wire       jtag_tck_i,
     input  wire       jtag_tms_i,
@@ -118,7 +123,7 @@ logic       rst_req_n;
 logic [3:0] rst_sync_q;
 logic       soc_rst_n;
 
-assign rst_req_n = mmcm_locked & power_good & cpu_rst_ni;
+assign rst_req_n = mmcm_locked & power_good & cpu_rst_ni & harness_rst_ni;
 
 always_ff @(posedge clk_soc or negedge rst_req_n) begin
     if (!rst_req_n) rst_sync_q <= '0;
@@ -275,8 +280,8 @@ chip_soc #(
     .hyper_cs_no     ( hb_cs_no     ),
     .hyper_reset_no  ( hb_reset_no  ),
 
-    // Boot mode select
-    .boot_sel_i,
+    // Boot mode select, switches must be at 00 for the harness to choose
+    .boot_sel_i      ( boot_sel_i | harness_boot_sel_i ),
 
     // GPIO Port A
     .gpio_a_i,
@@ -289,6 +294,8 @@ assign led_o[0] = heartbeat;
 assign led_o[1] = soc_end;
 assign led_o[2] = ~soc_rst_n;
 assign led_o[3] = power_good;
+
+assign harness_heartbeat_o = heartbeat;
 
 endmodule
 
