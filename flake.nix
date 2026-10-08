@@ -216,13 +216,5 @@
             ];
           };
         });
-
-      packages = forAllSystems (system:
-        let
-          pkgs = import nixpkgs { inherit system; };
-        in {
-          openocd-rpi = import ./nix/openocd-rpi.nix { inherit pkgs; };
-          openocd-ch347 = import ./nix/openocd-rpi.nix { inherit pkgs; target = pkgs.pkgsStatic; };
-        });
     };
 }
