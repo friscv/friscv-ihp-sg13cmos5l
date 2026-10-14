@@ -1,0 +1,9 @@
+* Metal-only chip art, no devices or pins
+.SUBCKT art_qr
+.ENDS
+.SUBCKT art_fer_hpc
+.ENDS
+.SUBCKT art_initials
+.ENDS
+.SUBCKT art_sahovnica
+.ENDS

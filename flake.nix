@@ -174,11 +174,14 @@
             LIBERTY_SG13G2 = ihp-sg13g2-liberty;
             PDK_ROOT = "${ihp-pdk}";
             PDK = "ihp-sg13cmos5l";
+            CHIP_ART_FONT = "${pkgs.dejavu_fonts}/share/fonts/truetype/DejaVuSans-Bold.ttf";
             packages = (with pkgs; [
               iverilog
               verilator
               bender
               python3
+              python3Packages.pillow
+              python3Packages.segno
               ngspice
               gtkwave
               klayout

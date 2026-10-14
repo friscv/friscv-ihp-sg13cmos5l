@@ -1,0 +1,23 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO art_sahovnica
+  CLASS BLOCK ;
+  FOREIGN art_sahovnica ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 79.000 BY 88.000 ;
+  OBS
+      LAYER Metal1 ;
+        RECT 0.000 0.000 79.000 88.000 ;
+      LAYER Metal2 ;
+        RECT 0.000 0.000 79.000 88.000 ;
+      LAYER Metal3 ;
+        RECT 0.000 0.000 79.000 88.000 ;
+      LAYER Metal4 ;
+        RECT 0.000 0.000 79.000 88.000 ;
+      LAYER TopMetal1 ;
+        RECT 0.000 0.000 79.000 88.000 ;
+  END
+END art_sahovnica
+END LIBRARY

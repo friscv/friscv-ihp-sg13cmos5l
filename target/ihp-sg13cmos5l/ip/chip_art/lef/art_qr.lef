@@ -1,0 +1,23 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO art_qr
+  CLASS BLOCK ;
+  FOREIGN art_qr ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 82.000 BY 82.000 ;
+  OBS
+      LAYER Metal1 ;
+        RECT 0.000 0.000 82.000 82.000 ;
+      LAYER Metal2 ;
+        RECT 0.000 0.000 82.000 82.000 ;
+      LAYER Metal3 ;
+        RECT 0.000 0.000 82.000 82.000 ;
+      LAYER Metal4 ;
+        RECT 0.000 0.000 82.000 82.000 ;
+      LAYER TopMetal1 ;
+        RECT 0.000 0.000 82.000 82.000 ;
+  END
+END art_qr
+END LIBRARY

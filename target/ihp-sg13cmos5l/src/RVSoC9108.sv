@@ -525,6 +525,12 @@ end
 );
 `pragma diagnostic pop
 
+// Chip art
+(* keep *) art_qr        i_art_qr        ();
+(* keep *) art_fer_hpc   i_art_fer_hpc   ();
+(* keep *) art_initials  i_art_initials  ();
+(* keep *) art_sahovnica i_art_sahovnica ();
+
 endmodule
 `pragma diagnostic pop
 
