@@ -24,6 +24,8 @@ meta:
     Checker.KLayoutAntenna: null
     # Do one more repair design pass to fix remaining max-slew
     +OpenROAD.ResizerTimingPostGRT: OpenROAD.RepairDesignPostGRT
+    # Apply manual global placement before RepairDesignPostGPL buffers the nets
+    +OpenROAD.GlobalPlacement: Odb.ManualGlobalPlacement
     # Chip CDL for KLayout LVS
     -Misc.ReportManufacturability: OpenROAD.WriteCDL
 
@@ -195,6 +197,17 @@ ROUTING_OBSTRUCTIONS:
 - ["TopMetal1", 557.76,  336.00, 1342.24,  400.36]
 
 PL_TARGET_DENSITY_PCT: 70
+
+# This is a great big trick to get good HyperBus timing
+# Please do not do this if you copy this config
+MANUAL_GLOBAL_PLACEMENTS:
+  _86418_:
+    location: [784.32, 415.8]
+    orientation: S
+  place33524:
+    location: [786.24, 412.02]
+    orientation: FN
+
 GRT_ALLOW_CONGESTION: true
 
 GRT_ADJUSTMENT: 0.22

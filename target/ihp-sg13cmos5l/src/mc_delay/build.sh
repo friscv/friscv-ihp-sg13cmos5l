@@ -108,6 +108,12 @@ PYTHONPATH="$LIBRELANE_PY${PYTHONPATH:+:$PYTHONPATH}" "$PY" "$STREAM_OUT" \
     -l "$REF/sg13cmos5l_stdcell/lef/sg13cmos5l_stdcell.lef" \
     -w "$REF/sg13cmos5l_stdcell/gds/sg13cmos5l_stdcell.gds"
 
+echo "== klayout: cover all GDS metal in the abstract =="
+klayout -b -r abst_obs.py \
+    -rd gds="out/$DESIGN.gds" \
+    -rd lef="out/$DESIGN.abst.lef" \
+    -rd cell="$DESIGN"
+
 echo "== checks =="
 fail=0
 

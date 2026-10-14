@@ -150,6 +150,13 @@ set HYP_OUT_RST  [get_ports hb_rst_PAD]
 set HYP_OUT_DOEN [concat [pad_bus_pins "hb_dq_pads\[%d\].hb_dq_pad" 8 c2p_en] \
                          [get_pins hb_rwds_pad/c2p_en]]
 
+# DQ output enable flop is placed by name in manual global placement
+set HYP_DQ_OE_Q [get_pins -quiet _86418_/Q]
+if { [llength $HYP_DQ_OE_Q] != 1
+     || [get_full_name [get_nets -of_objects $HYP_DQ_OE_Q]] ne "hb_dq_CORE2PAD_OE" } {
+    error "HyperBus: _86418_ does not drive hb_dq_CORE2PAD_OE, update MANUAL_GLOBAL_PLACEMENTS"
+}
+
 ####################
 # Secondary clocks #
 ####################
