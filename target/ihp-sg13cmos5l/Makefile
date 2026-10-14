@@ -26,6 +26,7 @@ sources.f: ../../Bender.yml ../../Bender.lock $(wildcard src/*.sv)
 	echo "$(CURDIR)/src/stubs/RM_IHPSG13_1P_256x32_c2_bm_bist.sv" >> $@
 	echo "$(CURDIR)/src/stubs/RM_IHPSG13_1P_64x64_c2_bm_bist.sv" >> $@
 	echo "$(CURDIR)/src/stubs/delay_line_D4_O1_6P000.sv" >> $@
+	echo "$(CURDIR)/src/stubs/chip_art.sv" >> $@
 	echo "$(CURDIR)/src/stubs/sg13cmos5l_stdcell_stubs.sv" >> $@
 	echo "$(CURDIR)/src/stubs/sg13cmos5l_io_stubs.v" >> $@
 	echo "$(CURDIR)/src/tc_sram.sv" >> $@

@@ -1,0 +1,23 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO art_fer_hpc
+  CLASS BLOCK ;
+  FOREIGN art_fer_hpc ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 272.500 BY 76.000 ;
+  OBS
+      LAYER Metal1 ;
+        RECT 0.000 0.000 272.500 76.000 ;
+      LAYER Metal2 ;
+        RECT 0.000 0.000 272.500 76.000 ;
+      LAYER Metal3 ;
+        RECT 0.000 0.000 272.500 76.000 ;
+      LAYER Metal4 ;
+        RECT 0.000 0.000 272.500 76.000 ;
+      LAYER TopMetal1 ;
+        RECT 0.000 0.000 272.500 76.000 ;
+  END
+END art_fer_hpc
+END LIBRARY

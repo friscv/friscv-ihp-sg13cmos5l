@@ -269,9 +269,14 @@ EXTRA_CDLS:
 - pdk_dir::libs.ref/sg13cmos5l_sram/cdl/RM_IHPSG13_1P_64x64_c2_bm_bist.cdl
 - dir::../src/mc_delay/views/delay_line_D4_O1_6P000.cdl
 - dir::../ip/bondpad_70x70/cdl/bondpad_70x70_5L.cdl
+- dir::../ip/chip_art/cdl/chip_art.cdl
 
 IGNORE_DISCONNECTED_MODULES:
 - bondpad_70x70_5L
+- art_qr
+- art_fer_hpc
+- art_initials
+- art_sahovnica
 
 # Shrink ring to have more core area
 # We don't need that much power
@@ -367,6 +372,59 @@ MACROS:
       # CK
       soc_inst.i_hyperbus.i_phy.clock_generator.i_delay_tx_clk_90/i_delay.i_delay_line:
         location: [1603.52, 366.66]
+        orientation: N
+  # Chip art in die corners between seal ring and pads
+  art_qr:
+    gds:
+      - dir::../ip/chip_art/gds/art_qr.gds
+    lef:
+      - dir::../ip/chip_art/lef/art_qr.lef
+    lib:
+      "*":
+        - dir::../ip/chip_art/lib/art_qr.lib
+    instances:
+      # SE corner
+      i_art_qr:
+        location: [1966, 52]
+        orientation: N
+  art_fer_hpc:
+    gds:
+      - dir::../ip/chip_art/gds/art_fer_hpc.gds
+    lef:
+      - dir::../ip/chip_art/lef/art_fer_hpc.lef
+    lib:
+      "*":
+        - dir::../ip/chip_art/lib/art_fer_hpc.lib
+    instances:
+      # NW corner
+      i_art_fer_hpc:
+        location: [50, 1969]
+        orientation: N
+  art_initials:
+    gds:
+      - dir::../ip/chip_art/gds/art_initials.gds
+    lef:
+      - dir::../ip/chip_art/lef/art_initials.lef
+    lib:
+      "*":
+        - dir::../ip/chip_art/lib/art_initials.lib
+    instances:
+      # SW corner
+      i_art_initials:
+        location: [50, 55]
+        orientation: N
+  art_sahovnica:
+    gds:
+      - dir::../ip/chip_art/gds/art_sahovnica.gds
+    lef:
+      - dir::../ip/chip_art/lef/art_sahovnica.lef
+    lib:
+      "*":
+        - dir::../ip/chip_art/lib/art_sahovnica.lib
+    instances:
+      # NE corner
+      i_art_sahovnica:
+        location: [1969, 1960]
         orientation: N
 
 # This is an alternative method compared to
